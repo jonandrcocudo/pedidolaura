@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Sidequest Recebida 🎀</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para minha Princesa 🎀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root {
             --pink-bg: #ffe6f2;
@@ -14,85 +14,75 @@
             --pink-button: #ff80bf;
             --pink-button-hover: #ff4d94;
             --white: #ffffff;
+            --game-green: #98fb98;
+            --danger-red: #ff6b6b;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Nunito', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
         body {
             background-color: var(--pink-bg);
-            background-image: radial-gradient(var(--pink-border) 2px, transparent 2px);
-            background-size: 30px 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23ffb3d9"/></svg>');
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             color: var(--pink-text);
             overflow: hidden;
+            font-family: 'Nunito', sans-serif;
         }
 
         .phone-container {
             background: var(--pink-card);
-            width: 90%;
-            max-width: 400px;
-            height: 80vh;
-            max-height: 700px;
-            border-radius: 30px;
-            border: 4px solid var(--pink-border);
-            box-shadow: 0 10px 25px rgba(255, 128, 191, 0.3);
-            position: relative;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 30px 20px;
             text-align: center;
-            transition: all 0.4s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(255, 179, 217, 0.5);
         }
 
-        .screen {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
+        .screen { display: none; flex-direction: column; align-items: center; width: 100%; animation: fadeIn 0.6s ease; padding-bottom: 40px; min-height: 100%; }
+        .screen.active { display: flex; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px) rotate(-2deg);} 75% {transform: translateX(5px) rotate(2deg);} }
+        
+        /* ANIMAÇÕES ADICIONAIS */
+        @keyframes Wigglin { 0%, 100% {transform: rotate(-2deg);} 50% {transform: rotate(2deg);} }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--game-green) } }
+        @keyframes gradientShift { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+        @keyframes flow_with_glow { 0% { box-shadow: 0 0 15px #ff80bf, inset 0 0 10px #ffb3d9; } 50% { box-shadow: 0 0 30px #ff4d94, inset 0 0 20px #ffb3d9; } 100% { box-shadow: 0 0 15px #ff80bf, inset 0 0 10px #ffb3d9; } }
+
+        .hello-kitty-gif { width: 130px; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(255, 179, 217, 0.6)); animation: float 3s ease-in-out infinite; }
+        
+        /* Estilos de Polaroid e Fotos Pessoais */
+        .photo-frame {
             width: 100%;
-            animation: fadeIn 0.5s ease;
+            max-width: 260px;
+            background: white;
+            padding: 12px 12px 35px 12px;
+            border-radius: 5px;
+            box-shadow: 0 8px 20px rgba(255, 128, 191, 0.3);
+            transform: rotate(-3deg);
+            margin: 20px 0;
+            animation: Wigglin 5s ease-in-out infinite;
+            transition: transform 0.3s ease;
         }
+        .photo-frame.right { transform: rotate(3deg); }
+        .photo-frame:hover { animation-play-state: paused; transform: scale(1.1) rotate(0deg) !important; z-index: 10;}
+        .photo-frame img { width: 100%; height: auto; border-radius: 3px; display: block; object-fit: cover; aspect-ratio: 3/4;}
+        .polaroid-caption { font-size: 13px; margin-top: 12px; font-weight: 900; color: var(--pink-button-hover); font-family: 'Comic Sans MS', cursive, sans-serif;}
 
-        .screen.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hello-kitty-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-            filter: drop-shadow(2px 4px 6px rgba(255, 179, 217, 0.5));
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: 900;
-            margin-bottom: 15px;
-            color: var(--pink-text);
-        }
-
-        p {
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            color: #b02a6c;
-        }
-
+        /* Estilos de Balões de Chat */
         .chat-bubble {
             background: var(--white);
             border-radius: 20px;
@@ -101,70 +91,59 @@
             width: 100%;
             text-align: left;
             border: 2px solid var(--pink-border);
-            box-shadow: 0 4px 10px rgba(255, 179, 217, 0.2);
             font-size: 15px;
+            line-height: 1.5;
+            box-shadow: 0 4px 10px rgba(255, 179, 217, 0.15);
+            position: relative;
         }
+        .chat-gao { background: #fff5f9; border-bottom-right-radius: 5px; }
+        .chat-laura { border-bottom-left-radius: 5px; }
+        .label { font-weight: 900; font-size: 11px; text-transform: uppercase; margin-bottom: 6px; display: block; color: var(--pink-button); }
 
-        .chat-gao {
-            background: #ffe6f2;
-            border-bottom-right-radius: 5px;
-        }
-
-        .chat-laura {
-            background: #fff;
-            border-bottom-left-radius: 5px;
-            text-align: right;
-        }
-
-        .chat-label {
-            font-weight: 900;
-            font-size: 12px;
-            margin-bottom: 5px;
-            color: var(--pink-text);
-        }
-
+        /* Botão Padrão Pulsante */
         button {
             background-color: var(--pink-button);
             color: white;
             border: none;
-            border-radius: 25px;
-            padding: 15px 30px;
+            border-radius: 35px;
+            padding: 18px;
             font-size: 18px;
             font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
-            transition: all 0.2s ease;
-            margin-top: auto;
-            margin-bottom: 20px;
-        }
-
-        button:hover {
-            background-color: var(--pink-button-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 77, 148, 0.6);
-        }
-
-        button:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 5px rgba(255, 77, 148, 0.4);
-        }
-
-        .mission-box {
-            background: white;
-            border: 3px dashed var(--pink-button);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 10px;
             width: 100%;
+            margin-top: auto;
+            box-shadow: 0 6px 0px #e667a5;
+            transition: all 0.2s ease;
+            animation: pulse 2s infinite;
         }
+        button:active { transform: translateY(4px); box-shadow: 0 2px 0px #e667a5; }
 
-        .mission-title {
-            color: var(--pink-button-hover);
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* --- DESIGNS ÚNICOS POR TELA --- */
+
+        /* Tela 2: Nuvens e Especial */
+        .cloud-box { background: white; border-radius: 30px; padding: 20px; border: 3px solid #b3d9ff; box-shadow: 10px 10px 0px #b3d9ff; position: relative; margin: 15px 0; animation: float 4s ease-in-out infinite; }
+        
+        /* Tela 3: Casamento Elegante */
+        .wedding-card { border: 2px solid gold; padding: 20px; border-radius: 10px; box-shadow: 0 10px 20px rgba(255,215,0,0.2); background: linear-gradient(135deg, #fff, #fff9e6, #fff); background-size: 200% 200%; animation: gradientShift 4s ease infinite;}
+        .wedding-icon { font-size: 40px; animation: pulse 2s infinite; }
+
+        /* Tela 4: Gamer / Pixel Art */
+        .gamer-box { background: #222; border: 4px solid var(--game-green); padding: 20px; color: var(--game-green); font-family: 'Press Start 2P', cursive; text-align: left; font-size: 10px; line-height: 1.8; box-shadow: 5px 5px 0px #111; margin: 15px 0; border-radius: 5px;}
+        .gamer-title { color: #fff; font-size: 12px; margin-bottom: 15px; text-align: center; display: inline-block; animation: typing 3s steps(15) forwards, blink 0.75s step-end infinite; white-space: nowrap; overflow: hidden; border-right: 3px solid var(--game-green); width: 0; }
+
+        /* Tela 5: Matemática / Infinito */
+        .infinity-box { padding: 30px; border-radius: 50%; border: 4px dashed var(--pink-button); background: white; animation: pulse 3s infinite; margin: 20px 0;}
+
+        /* Tela 6: Ameaça / Perigo Fofo */
+        .danger-box { background: #ffe6e6; border: 4px solid var(--danger-red); border-radius: 15px; padding: 20px; box-shadow: 0 0 15px rgba(255,107,107,0.4); animation: shake 3s infinite; margin: 15px 0;}
+        .danger-box .label { color: var(--danger-red); }
+
+        /* Tela 8: Glowing / Final Quest */
+        .glow-box { background: white; border-radius: 25px; padding: 25px; border: 3px solid #ff4d94; margin-top: 20px; animation: flow_with_glow 4s linear infinite; }
+        .btn-glow { background: linear-gradient(45deg, #ff4d94, #ff80bf); box-shadow: 0 6px 0px #c2185b, 0 0 20px #ff4d94; animation: pulse 1.5s infinite, flow_with_glow 4s linear infinite;}
+
+        h1 { font-size: 24px; font-weight: 900; margin-bottom: 10px; color: var(--pink-text); line-height: 1.2;}
+        p { font-size: 16px; font-weight: 700; color: #b02a6c; line-height: 1.5;}
     </style>
 </head>
 <body>
@@ -172,82 +151,172 @@
     <div class="phone-container">
         
         <div class="screen active" id="screen-1">
-            <div class="hello-kitty-icon">🎀🐾💕</div>
-            <h1>Nova Missão Recebida!</h1>
-            <p>Aviso do sistema: Níveis de carinho e ansiedade detectados acima do normal.</p>
-            <p>Pronta para acessar o registro de memórias, Princesa Amor da Minha Vida?</p>
-            <button onclick="nextScreen(2)">START (Muak)</button>
+            <img src="https://media.tenor.com/FwT0rA8xZNEAAAAi/hello-kitty.gif" class="hello-kitty-gif" alt="Hello Kitty">
+            <h1>Acesso Restrito 🎀</h1>
+            <div class="chat-bubble chat-gao" style="margin-top: 20px;">
+                <span class="label">Gao ❤️</span>
+                "O digitei laira sem querer e n corrigi o i direito foi mal. Ainda tem chance de estar errado do jeito q sou sonso"
+            </div>
+            <div class="chat-bubble chat-laura">
+                <span class="label">Francisca/Lara/Laura ❤️💍</span>
+                "sou francisca. tadinh."
+            </div>
+            <p style="font-size: 14px; margin-top: 15px;">Login confirmado. Bem-vinda à nossa Sidequest.</p>
+            <button onclick="nextScreen(2)">INICIAR JORNADA 💕</button>
         </div>
 
         <div class="screen" id="screen-2">
-            <div class="hello-kitty-icon">🌸</div>
-            <h1>Memória Desbloqueada</h1>
-            <div class="chat-bubble chat-laura">
-                <div class="chat-label">Laura ❤️💍</div>
-                E EU GOSTEI DE VC EM TUDO MAIS MILHOES BILHOES ZILHOES QUADRILHOES
+            <h1>Diagnósticos de Amor</h1>
+            
+            <div class="photo-frame">
+                <img src="image_e07617.jpg" alt="Nossa Foto Diagnósticos" onerror="this.src='https://via.placeholder.com/250x300/ffe6f2/ff80bf?text=Coloque+a+foto+image_e07617.jpg+aqui'">
+                <p class="polaroid-caption">O "Especial" dela. ❤️</p>
             </div>
-            <div class="chat-bubble chat-gao">
-                <div class="chat-label">Gao 🕷️</div>
-                Eu gostei de tudo em vc mais milhoes bilhoes zilhoes quadrilhoes quinquilhoes
+
+            <div class="cloud-box">
+                <p style="font-size: 14px; color: #4a90e2; margin-bottom: 10px;">"vc é autista né Gabriell? tenho tanto amor por pessoas autistas..."</p>
+                <h2 style="color: #4a90e2; font-size: 20px;">"seu especial!!!" 🥺🤲🏻</h2>
+                <hr style="border:1px dashed #b3d9ff; margin: 15px 0;">
+                <p style="font-size: 14px; color: #e24a4a;">"Nãããoooo Ninguém pode me chamar assim!!! Sou gente normal."</p>
             </div>
-            <div class="chat-bubble chat-laura">
-                <div class="chat-label">Laura ❤️💍</div>
-                vc ganhou afi
-            </div>
-            <button onclick="nextScreen(3)">PRÓXIMA 🍓</button>
+            <p>Eu posso até tentar ser "normal", mas com você eu sou o autista dos fatos random mais feliz do mundo.</p>
+            <button onclick="nextScreen(3)" style="background: #4a90e2; box-shadow: 0 6px 0px #2a6cb3;">PRÓXIMA 🍓</button>
         </div>
 
         <div class="screen" id="screen-3">
-            <div class="hello-kitty-icon">🧸</div>
-            <h1>A Promessa</h1>
-            <div class="chat-bubble chat-gao">
-                <div class="chat-label">Gao 🕷️</div>
-                Vc promete q n vai me abandonar?
+            <div class="wedding-icon">💍✨</div>
+            <h1>Planos pro Futuro</h1>
+            
+            <div class="photo-frame right">
+                <img src="image_e07618.jpg" alt="Nossa Foto Casamento" onerror="this.src='https://via.placeholder.com/250x300/ffe6f2/ff80bf?text=Coloque+a+foto+image_e07618.jpg+aqui'">
+                <p class="polaroid-caption">Casamento? Yupeeeee! ✨</p>
             </div>
-            <div class="chat-bubble chat-laura">
-                <div class="chat-label">Laura ❤️💍</div>
-                eu q te pergunto isso
+
+            <div class="wedding-card">
+                <div class="chat-bubble chat-laura" style="border-color: gold; box-shadow: none;">
+                    <span class="label" style="color: goldenrod;">Laura ❤️💍</span>
+                    "casamento!!!!!! agora!!!!!"
+                </div>
+                <div class="chat-bubble chat-gao" style="border-color: gold; box-shadow: none;">
+                    <span class="label" style="color: goldenrod;">Gao ❤️</span>
+                    "O casamento vai ser muito foda com bungeejump e a lua de mel vai ser uma eua trip"
+                </div>
+                <div class="chat-bubble chat-laura" style="border-color: gold; box-shadow: none;">
+                    <span class="label" style="color: goldenrod;">Laura ❤️💍</span>
+                    "YUPEEEEE VAMO e vai ter pole dance no quarto pra eu dançar pra vc"
+                </div>
             </div>
-            <div class="chat-bubble chat-gao">
-                <div class="chat-label">Gao 🕷️</div>
-                Eu prometo. Se é pra gente ter alguma coisa mais séria vou me esforçar o máximo pra dar certo.
-            </div>
-            <button onclick="nextScreen(4)">CONTINUAR ✨</button>
+            <p style="margin-top: 15px;">O roteiro já tá pronto, só falta a gente.</p>
+            <button onclick="nextScreen(4)" style="background: gold; color: #b02a6c; box-shadow: 0 6px 0px goldenrod;">ACEITAR TERMOS ✨</button>
         </div>
 
         <div class="screen" id="screen-4">
-            <div class="hello-kitty-icon">💍💐</div>
-            <h1>Sidequest Final</h1>
-            <div class="chat-bubble chat-laura" style="font-size: 13px;">
-                <div class="chat-label">Laura ❤️💍 (Log Antigo)</div>
+            <img src="https://media.tenor.com/1Oze5T7W0OQAAAAi/hello-kitty-cute.gif" class="hello-kitty-gif" style="width: 100px;">
+            <h1>Player 2 Conectado</h1>
+            
+            <div class="photo-frame">
+                <img src="image_e075d7.jpg" alt="Player 2 Spidey" onerror="this.src='https://via.placeholder.com/250x300/ffe6f2/ff80bf?text=Coloque+a+foto+image_e075d7.jpg+aqui'">
+                <p class="polaroid-caption">Conectados no espelho. 🕷️</p>
+            </div>
+
+            <div class="gamer-box">
+                <div class="gamer-title">>> SYSTEM LOG <<</div>
+                > LAURA: "abaixa mobile legends pra gente jogarrrr"<br><br>
+                > GAO: "Baixei mobile legends no pc tb. meu id de amizade é 2161358286"<br><br>
+                > LAURA: "af queria jogar no pc"<br><br>
+                > GAO: "Joga no meu kskkk"
+            </div>
+            <p>Estar em call com você jogando ou falando besteira é o meu lugar favorito.</p>
+            <button onclick="nextScreen(5)" style="background: var(--game-green); color: #111; box-shadow: 0 6px 0px #3cb371;">NEXT LEVEL 🎮</button>
+        </div>
+
+        <div class="screen" id="screen-5">
+            <h1>A Matemática</h1>
+            
+            <div class="photo-frame right">
+                <img src="image_e0761a.jpg" alt="Quadrilhões duo" onerror="this.src='https://via.placeholder.com/250x300/ffe6f2/ff80bf?text=Coloque+a+foto+image_e0761a.jpg+aqui'">
+                <p class="polaroid-caption">Duo dos Zilhões. ❤️</p>
+            </div>
+
+            <div class="infinity-box">
+                <h1 style="font-size: 40px; color: var(--pink-button);">∞</h1>
+                <p style="font-size: 13px; font-weight: 900;">MILHÕES<br>BILHÕES<br>ZILHÕES<br>QUADRILHÕES<br>QUINQUILHÕES</p>
+            </div>
+            <div class="chat-bubble chat-laura">
+                <span class="label">Laura ❤️💍</span>
+                "vc ganhou afi"
+            </div>
+            <p>No final, quem ganha de verdade sou eu.</p>
+            <button onclick="nextScreen(6)">CONTINUAR 🧸</button>
+        </div>
+
+        <div class="screen" id="screen-6">
+            <img src="https://media.tenor.com/T0bH9O8xZNEAAAAi/hello-kitty-angry.gif" class="hello-kitty-gif" style="width: 100px; animation: none;">
+            <h1>O Ultimato</h1>
+            <div class="danger-box">
+                <div class="chat-bubble chat-laura" style="border-color: var(--danger-red);">
+                    <span class="label" style="color: var(--danger-red);">Laura ❤️💍</span>
+                    "me namora logo. nao espero nao. te dou 1 hora. se n leva tiro."
+                </div>
+                <div class="chat-bubble chat-gao" style="border-color: var(--danger-red); background: #fff0f0;">
+                    <span class="label" style="color: var(--danger-red);">Gao ❤️</span>
+                    "Tinamoro. Só que tenho q comprar os aneis kskkkk"
+                </div>
+            </div>
+            <p>Acho que já passou mais de 1 hora... melhor eu me apressar.</p>
+            <button onclick="nextScreen(7)" style="background: var(--danger-red); box-shadow: 0 6px 0px #cc0000;">SALVAR MINHA VIDA 🚨</button>
+        </div>
+
+        <div class="screen" id="screen-7">
+            <img src="https://media.tenor.com/9v4Z0k1E25IAAAAi/hello-kitty-eating.gif" class="hello-kitty-gif" style="width: 110px;">
+            <h1>A Dieta de Campeões</h1>
+            <div class="chat-bubble chat-gao">
+                <span class="label">Gao ❤️</span>
+                "Miojo da monica de tomate pra ser mais saudavel ne"
+            </div>
+            <div class="chat-bubble chat-laura">
+                <span class="label">Laura ❤️💍</span>
+                "ao mdm tempo q eu quero comer lanche, eu quero comprar meu carrinuo todo da shein"
+            </div>
+            <p>Prometo te pagar os hambúrgueres e os mimos sempre que eu puder, tá? Sem você precisar ficar com vergonha.</p>
+            <button onclick="nextScreen(8)">IR PARA A MISSÃO FINAL 🍔</button>
+        </div>
+
+        <div class="screen" id="screen-8">
+            <img src="https://media.tenor.com/2sHq6X9hP4QAAAAi/hello-kitty-love.gif" class="hello-kitty-gif">
+            <h1>Missão Concluída? 💐</h1>
+            
+            <div class="chat-bubble chat-laura" style="border: 2px solid gold;">
+                <span class="label">Laura ❤️💍 (Log Antigo)</span>
                 "me pede em namoro com buque de hamburguer"
             </div>
             
-            <div class="mission-box">
-                <div class="mission-title">⭐ OBJETIVO ATUALIZADO ⭐</div>
-                <p style="font-size: 14px; margin-bottom: 10px;">Eu sei que fiquei devendo o hambúrguer... mas decidi fazer um buquê que não acaba em 10 minutos.</p>
-                <p style="font-size: 14px; margin-bottom: 5px;"><strong>Passo 1:</strong> Saia de fininho da festa.</p>
-                <p style="font-size: 14px; margin-bottom: 5px;"><strong>Passo 2:</strong> Venha até a minha porta.</p>
-                <p style="font-size: 14px; margin-bottom: 0;"><strong>Recompensa:</strong> Oficializar o status de namorada.</p>
+            <div class="photo-frame">
+                <img src="image_e06b14.jpg" alt="Final Quest Duo" onerror="this.src='https://via.placeholder.com/250x300/ffe6f2/ff80bf?text=Coloque+a+foto+image_e06b14.jpg+aqui'">
+                <p class="polaroid-caption">Nosso pra sempre. 💐</p>
             </div>
-            <button onclick="finishQuest()" style="margin-top: 20px;">ABRIR A PORTA 🐾</button>
+
+            <div class="glow-box">
+                <p style="font-weight: 900; color: var(--pink-button-hover); font-size: 22px;">OBJETIVO FINAL</p>
+                <p style="font-size: 15px; margin: 12px 0; color: #333;">Eu fiquei devendo o hambúrguer, mas fiz um buquê com as minhas próprias mãos que brilha no escuro pra você.</p>
+                <hr style="border: 0; border-top: 2px dashed #ffb3d9; margin: 15px 0;">
+                <p style="font-size: 15px; text-align: left; padding-left: 10px; color: #333;">
+                🎀 <b>1.</b> Saia da festa de fininho.<br><br>
+                🎀 <b>2.</b> Vem aqui pra minha casa.<br><br>
+                🎀 <b>3.</b> Deixa eu te entregar as alianças que você mandou eu comprar.</p>
+            </div>
+            
+            <button class="btn-glow" onclick="alert('Estou te esperando no quarto, Princesa Amor da Minha Vida. ❤️')">ABRIR A PORTA 🐾</button>
+            <p style="font-size: 12px; margin-top: 15px; opacity: 0.8; font-weight: 900;">(Dica: Lembra que a tranca do meu quarto é invertida? Mande o comando de FECHAR pra ela ABRIR).</p>
         </div>
 
     </div>
 
     <script>
-        function nextScreen(screenNumber) {
-            // Esconde todas as telas
-            const screens = document.querySelectorAll('.screen');
-            screens.forEach(screen => screen.classList.remove('active'));
-            
-            // Mostra a tela correta
-            document.getElementById('screen-' + screenNumber).classList.add('active');
-        }
-
-        function finishQuest() {
-            // Aqui você pode colocar para tocar a música da Lana Del Rey ou a sua se ela tiver feito o clique final
-            alert("Vem logo, to te esperando. ❤️");
+        function nextScreen(num) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen-' + num).classList.add('active');
+            document.querySelector('.phone-container').scrollTop = 0;
         }
     </script>
 
