@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Sidequest Recebida 🎀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-bg: #ffe6f2;
+            --pink-card: #fff0f5;
+            --pink-border: #ffb3d9;
+            --pink-text: #d63384;
+            --pink-button: #ff80bf;
+            --pink-button-hover: #ff4d94;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--pink-bg);
+            background-image: radial-gradient(var(--pink-border) 2px, transparent 2px);
+            background-size: 30px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: var(--pink-text);
+            overflow: hidden;
+        }
+
+        .phone-container {
+            background: var(--pink-card);
+            width: 90%;
+            max-width: 400px;
+            height: 80vh;
+            max-height: 700px;
+            border-radius: 30px;
+            border: 4px solid var(--pink-border);
+            box-shadow: 0 10px 25px rgba(255, 128, 191, 0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .screen {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hello-kitty-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(255, 179, 217, 0.5));
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--pink-text);
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: #b02a6c;
+        }
+
+        .chat-bubble {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: left;
+            border: 2px solid var(--pink-border);
+            box-shadow: 0 4px 10px rgba(255, 179, 217, 0.2);
+            font-size: 15px;
+        }
+
+        .chat-gao {
+            background: #ffe6f2;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-laura {
+            background: #fff;
+            border-bottom-left-radius: 5px;
+            text-align: right;
+        }
+
+        .chat-label {
+            font-weight: 900;
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: var(--pink-text);
+        }
+
+        button {
+            background-color: var(--pink-button);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
+            transition: all 0.2s ease;
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: var(--pink-button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 77, 148, 0.6);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(255, 77, 148, 0.4);
+        }
+
+        .mission-box {
+            background: white;
+            border: 3px dashed var(--pink-button);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .mission-title {
+            color: var(--pink-button-hover);
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        
+        <div class="screen active" id="screen-1">
+            <div class="hello-kitty-icon">🎀🐾💕</div>
+            <h1>Nova Missão Recebida!</h1>
+            <p>Aviso do sistema: Níveis de carinho e ansiedade detectados acima do normal.</p>
+            <p>Pronta para acessar o registro de memórias, Princesa Amor da Minha Vida?</p>
+            <button onclick="nextScreen(2)">START (Muak)</button>
+        </div>
+
+        <div class="screen" id="screen-2">
+            <div class="hello-kitty-icon">🌸</div>
+            <h1>Memória Desbloqueada</h1>
+            <div class="chat-bubble chat-laura">
+                <div class="chat-label">Laura ❤️💍</div>
+                E EU GOSTEI DE VC EM TUDO MAIS MILHOES BILHOES ZILHOES QUADRILHOES
+            </div>
+            <div class="chat-bubble chat-gao">
+                <div class="chat-label">Gao 🕷️</div>
+                Eu gostei de tudo em vc mais milhoes bilhoes zilhoes quadrilhoes quinquilhoes
+            </div>
+            <div class="chat-bubble chat-laura">
+                <div class="chat-label">Laura ❤️💍</div>
+                vc ganhou afi
+            </div>
+            <button onclick="nextScreen(3)">PRÓXIMA 🍓</button>
+        </div>
+
+        <div class="screen" id="screen-3">
+            <div class="hello-kitty-icon">🧸</div>
+            <h1>A Promessa</h1>
+            <div class="chat-bubble chat-gao">
+                <div class="chat-label">Gao 🕷️</div>
+                Vc promete q n vai me abandonar?
+            </div>
+            <div class="chat-bubble chat-laura">
+                <div class="chat-label">Laura ❤️💍</div>
+                eu q te pergunto isso
+            </div>
+            <div class="chat-bubble chat-gao">
+                <div class="chat-label">Gao 🕷️</div>
+                Eu prometo. Se é pra gente ter alguma coisa mais séria vou me esforçar o máximo pra dar certo.
+            </div>
+            <button onclick="nextScreen(4)">CONTINUAR ✨</button>
+        </div>
+
+        <div class="screen" id="screen-4">
+            <div class="hello-kitty-icon">💍💐</div>
+            <h1>Sidequest Final</h1>
+            <div class="chat-bubble chat-laura" style="font-size: 13px;">
+                <div class="chat-label">Laura ❤️💍 (Log Antigo)</div>
+                "me pede em namoro com buque de hamburguer"
+            </div>
+            
+            <div class="mission-box">
+                <div class="mission-title">⭐ OBJETIVO ATUALIZADO ⭐</div>
+                <p style="font-size: 14px; margin-bottom: 10px;">Eu sei que fiquei devendo o hambúrguer... mas decidi fazer um buquê que não acaba em 10 minutos.</p>
+                <p style="font-size: 14px; margin-bottom: 5px;"><strong>Passo 1:</strong> Saia de fininho da festa.</p>
+                <p style="font-size: 14px; margin-bottom: 5px;"><strong>Passo 2:</strong> Venha até a minha porta.</p>
+                <p style="font-size: 14px; margin-bottom: 0;"><strong>Recompensa:</strong> Oficializar o status de namorada.</p>
+            </div>
+            <button onclick="finishQuest()" style="margin-top: 20px;">ABRIR A PORTA 🐾</button>
+        </div>
+
+    </div>
+
+    <script>
+        function nextScreen(screenNumber) {
+            // Esconde todas as telas
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            
+            // Mostra a tela correta
+            document.getElementById('screen-' + screenNumber).classList.add('active');
+        }
+
+        function finishQuest() {
+            // Aqui você pode colocar para tocar a música da Lana Del Rey ou a sua se ela tiver feito o clique final
+            alert("Vem logo, to te esperando. ❤️");
+        }
+    </script>
+
+</body>
+</html>
